@@ -1,0 +1,31 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+DEF posicioninicial PositionInterpolator 
+{
+	key 
+	[ 
+			<#= InterpolationKey #> 
+	]
+	keyValue 
+	[
+    <#foreach (Solucion item in Camino)
+      {#>
+			<#= VRML._M*(item.X * 3) #> 0 <#= VRML._M*((item.Z * 3)+1) #>, 
+    <#}#>
+			<#= VRML._M*(Camino[Camino.Count-1].X * 3)#> 0 <#= VRML._M*((Camino[Camino.Count-1].Z * 3)+1)#>
+	
+	]
+} 
+
+DEF temporizador TimeSensor 
+{
+	cycleInterval <#= Laberinto3D.Camino.Count / 5 #>
+	loop FALSE
+}
+   
+ROUTE temporizador.fraction_changed TO posicioninicial.set_fraction			
+ROUTE posicioninicial.value_changed TO Avatar.set_translation			
+ROUTE sensoravatar.touchTime TO temporizador.set_startTime	

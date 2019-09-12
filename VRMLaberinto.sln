@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29230.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laberinto3D.Winform", "Form_Laberinto\Laberinto3D.Winform.csproj", "{1BD1559D-0557-4043-847B-1E4966E9302E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laberinto3D.Console", "Consola_Laberinto\Laberinto3D.Console.csproj", "{F171E5A3-753E-4A0A-AABE-35B080558040}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laberinto3D.Engine", "Engine\Laberinto3D.Engine.csproj", "{4E905392-48BA-48D7-859E-75EC7E863290}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1BD1559D-0557-4043-847B-1E4966E9302E}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{1BD1559D-0557-4043-847B-1E4966E9302E}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{1BD1559D-0557-4043-847B-1E4966E9302E}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{1BD1559D-0557-4043-847B-1E4966E9302E}.Debug|x86.ActiveCfg = Debug|x86
+		{1BD1559D-0557-4043-847B-1E4966E9302E}.Debug|x86.Build.0 = Debug|x86
+		{1BD1559D-0557-4043-847B-1E4966E9302E}.Release|Any CPU.ActiveCfg = Release|x86
+		{1BD1559D-0557-4043-847B-1E4966E9302E}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{1BD1559D-0557-4043-847B-1E4966E9302E}.Release|Mixed Platforms.Build.0 = Release|x86
+		{1BD1559D-0557-4043-847B-1E4966E9302E}.Release|x86.ActiveCfg = Release|x86
+		{1BD1559D-0557-4043-847B-1E4966E9302E}.Release|x86.Build.0 = Release|x86
+		{F171E5A3-753E-4A0A-AABE-35B080558040}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{F171E5A3-753E-4A0A-AABE-35B080558040}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{F171E5A3-753E-4A0A-AABE-35B080558040}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{F171E5A3-753E-4A0A-AABE-35B080558040}.Debug|x86.ActiveCfg = Debug|x86
+		{F171E5A3-753E-4A0A-AABE-35B080558040}.Debug|x86.Build.0 = Debug|x86
+		{F171E5A3-753E-4A0A-AABE-35B080558040}.Release|Any CPU.ActiveCfg = Release|x86
+		{F171E5A3-753E-4A0A-AABE-35B080558040}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{F171E5A3-753E-4A0A-AABE-35B080558040}.Release|Mixed Platforms.Build.0 = Release|x86
+		{F171E5A3-753E-4A0A-AABE-35B080558040}.Release|x86.ActiveCfg = Release|x86
+		{F171E5A3-753E-4A0A-AABE-35B080558040}.Release|x86.Build.0 = Release|x86
+		{4E905392-48BA-48D7-859E-75EC7E863290}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E905392-48BA-48D7-859E-75EC7E863290}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E905392-48BA-48D7-859E-75EC7E863290}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{4E905392-48BA-48D7-859E-75EC7E863290}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{4E905392-48BA-48D7-859E-75EC7E863290}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4E905392-48BA-48D7-859E-75EC7E863290}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E905392-48BA-48D7-859E-75EC7E863290}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E905392-48BA-48D7-859E-75EC7E863290}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{4E905392-48BA-48D7-859E-75EC7E863290}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{4E905392-48BA-48D7-859E-75EC7E863290}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {44595C25-DE15-4F9C-860F-270A3B6195CF}
+	EndGlobalSection
+EndGlobal

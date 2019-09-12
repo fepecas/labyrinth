@@ -1,0 +1,43 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+# Matriz (x=<#= _x / 3 #>,z=<#= _z / 3 #>) ///////////////////////////////////////////////////////////////////
+<# if(!Puerta_Izq){  #>
+	Transform {
+			translation <#= _x-(1.25*VRML._M) #>,<#= _y #>,<#= _z+(1.25*VRML._M) #> rotation 0 1 0 1.57079
+			children Shape {			
+				appearance Appearance {	material Material { diffuseColor <#= _rh #>,<#= _gh #>,<#= _bh #> } }
+				geometry USE Pared
+			}	
+		}
+<# } 
+if(!Puerta_Der){  #>
+	Transform {
+			translation <#= _x+(1.25*VRML._M) #>,<#= _y #>,<#= _z+(1.25*VRML._M) #>
+			rotation	0 1 0  1.57079
+			children Shape {			
+				appearance Appearance { material Material { diffuseColor <#= _rh #>,<#= _gh #>,<#= _bh #> } }
+				geometry USE Pared
+			}		
+		}	
+<# } 
+if(!Puerta_Arr){  #>
+	Transform {
+			translation <#= _x #>,<#= _y #>,<#= _z #>
+			children Shape {
+				appearance Appearance {	material Material { diffuseColor <#= _rh #>,<#= _gh #>,<#= _bh #> } }
+				geometry USE Pared
+			}
+		}	
+<# } 
+if(!Puerta_Aba){  #>
+	Transform {
+			translation <#= _x #>,<#= _y #>,<#= _z+(2.5*VRML._M) #>
+			children Shape {			
+				appearance Appearance {	material Material { diffuseColor <#= _rh #>,<#= _gh #>,<#= _bh #> } }
+				geometry USE Pared
+			}		
+		}	
+<# } #>
