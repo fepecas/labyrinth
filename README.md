@@ -1,7 +1,6 @@
 # Labyrinth Generator
-3D-VRML labyrinths generator
 
-> Written in C# + T4 with .NET Framework
+> Written in C#, T4 and VRML with .NET Framework
 
 ## Screenshots
 
