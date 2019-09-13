@@ -36,3 +36,8 @@
 
 ## Documentation
 There's a [detailed document](https://github.com/fepecas/labyrinth/raw/master/doc/Informe_Final.pdf) to understand how this program works.
+
+## Challenge
+1. Where are randomly chosen the entry and exit of a generated labyrinth?
+2. Where is the declaration of the yellow sphere that runs through the labyrinth?
+3. What is the class and method that performs the whole VRML code generation?
