@@ -1,0 +1,11 @@
+D:\TRAINING\dotNet\VRMLaberinto\Consola_Laberinto\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\TRAINING\dotNet\VRMLaberinto\Consola_Laberinto\obj\x86\Debug\Generador básico.exe
+D:\TRAINING\dotNet\VRMLaberinto\Consola_Laberinto\bin\Debug\Generador básico.exe
+D:\TRAINING\dotNet\VRMLaberinto\Consola_Laberinto\bin\Debug\Generador básico.pdb
+D:\TRAINING\dotNet\VRMLaberinto\Consola_Laberinto\obj\x86\Debug\Generador básico.pdb
+P:\WORKSPACE\dotnet\labyrinth\Consola_Laberinto\bin\Debug\Generador básico.exe
+P:\WORKSPACE\dotnet\labyrinth\Consola_Laberinto\bin\Debug\Generador básico.pdb
+P:\WORKSPACE\dotnet\labyrinth\Consola_Laberinto\obj\x86\Debug\Laberinto3D.Console.csprojAssemblyReference.cache
+P:\WORKSPACE\dotnet\labyrinth\Consola_Laberinto\obj\x86\Debug\Laberinto3D.Console.csproj.CoreCompileInputs.cache
+P:\WORKSPACE\dotnet\labyrinth\Consola_Laberinto\obj\x86\Debug\Generador básico.exe
+P:\WORKSPACE\dotnet\labyrinth\Consola_Laberinto\obj\x86\Debug\Generador básico.pdb

@@ -1,0 +1,11 @@
+D:\TRAINING\dotNet\VRMLaberinto\Engine\bin\Debug\Engine.dll
+D:\TRAINING\dotNet\VRMLaberinto\Engine\bin\Debug\Engine.pdb
+D:\TRAINING\dotNet\VRMLaberinto\Engine\obj\Debug\ResolveAssemblyReference.cache
+D:\TRAINING\dotNet\VRMLaberinto\Engine\obj\Debug\Engine.dll
+D:\TRAINING\dotNet\VRMLaberinto\Engine\obj\Debug\Engine.pdb
+P:\WORKSPACE\dotnet\labyrinth\Engine\bin\Debug\Engine.dll
+P:\WORKSPACE\dotnet\labyrinth\Engine\bin\Debug\Engine.pdb
+P:\WORKSPACE\dotnet\labyrinth\Engine\obj\Debug\Laberinto3D.Engine.csprojAssemblyReference.cache
+P:\WORKSPACE\dotnet\labyrinth\Engine\obj\Debug\Laberinto3D.Engine.csproj.CoreCompileInputs.cache
+P:\WORKSPACE\dotnet\labyrinth\Engine\obj\Debug\Engine.dll
+P:\WORKSPACE\dotnet\labyrinth\Engine\obj\Debug\Engine.pdb

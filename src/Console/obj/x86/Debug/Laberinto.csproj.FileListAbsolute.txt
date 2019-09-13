@@ -1,0 +1,5 @@
+D:\TRAINING\dotNet\Laberinto\Laberinto\bin\Debug\Laberinto.exe
+D:\TRAINING\dotNet\Laberinto\Laberinto\bin\Debug\Laberinto.pdb
+D:\TRAINING\dotNet\Laberinto\Laberinto\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\TRAINING\dotNet\Laberinto\Laberinto\obj\x86\Debug\Laberinto.exe
+D:\TRAINING\dotNet\Laberinto\Laberinto\obj\x86\Debug\Laberinto.pdb

@@ -1,0 +1,11 @@
+D:\TRAINING\dotNet\Form_Laberinto\Form_Laberinto\bin\Debug\Laberinto3D.exe
+D:\TRAINING\dotNet\Form_Laberinto\Form_Laberinto\bin\Debug\Laberinto3D.pdb
+D:\TRAINING\dotNet\Form_Laberinto\Form_Laberinto\bin\Debug\TextTemplate.dll
+D:\TRAINING\dotNet\Form_Laberinto\Form_Laberinto\bin\Debug\TextTemplate.xml
+D:\TRAINING\dotNet\Form_Laberinto\Form_Laberinto\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\TRAINING\dotNet\Form_Laberinto\Form_Laberinto\obj\x86\Debug\Form_Laberinto.Autoconstruir.resources
+D:\TRAINING\dotNet\Form_Laberinto\Form_Laberinto\obj\x86\Debug\Form_Laberinto.Properties.Resources.resources
+D:\TRAINING\dotNet\Form_Laberinto\Form_Laberinto\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\TRAINING\dotNet\Form_Laberinto\Form_Laberinto\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\TRAINING\dotNet\Form_Laberinto\Form_Laberinto\obj\x86\Debug\Laberinto3D.exe
+D:\TRAINING\dotNet\Form_Laberinto\Form_Laberinto\obj\x86\Debug\Laberinto3D.pdb

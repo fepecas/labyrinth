@@ -1,0 +1,1025 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TextTemplate</name>
+    </assembly>
+    <members>
+        <member name="T:TextTemplate.CSharpTemplateHandler">
+            <summary>
+            This class implements <see cref="T:TextTemplate.ITemplateLanguageHandler"/> for the C# language.
+            </summary>
+        </member>
+        <member name="T:TextTemplate.TemplateLanguageHandlerBase">
+            <summary>
+            This is a base class that implements some general utility methods and skeleton code
+            for a <see cref="T:TextTemplate.ITemplateLanguageHandler"/> implementation.
+            </summary>
+        </member>
+        <member name="T:TextTemplate.ITemplateLanguageHandler">
+            <summary>
+            This interface must be implemented by classes that handles specific languages.
+            </summary>
+        </member>
+        <member name="M:TextTemplate.ITemplateLanguageHandler.RewriteAndCompile(System.String,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.Type,System.String,System.String@)">
+            <summary>
+            Rewrite the specific code parts into a source code file that can
+            be compiled, compiles it, and returns the compiled assembly.
+            </summary>
+            <param name="language">
+            The language to write the code for.
+            </param>
+            <param name="namespaceImports">
+            A collection of strings naming namespaces to import into the generated code.
+            </param>
+            <param name="assemblyReferences">
+            A collection of strings naming assemblies to reference when compiling the code.
+            </param>
+            <param name="codeParts">
+            A collection of <see cref="T:System.String"/>s containing the code parts to generate the code for.
+            </param>
+            <param name="parameterType">
+            The <see cref="T:System.Type"/> of the parameter to the template.
+            </param>
+            <param name="parameterName">
+            The name of the parameter to the template. If left as <see cref="F:System.String.Empty"/>, the public readable
+            properties of the <paramref name="parameterType"/> will be exposed as their own parameters instead.
+            </param>
+            <param name="code">
+            Upon return of this method, this parameter will contain the code that was compiled, or was attempted compiled.
+            </param>
+            <returns>
+            The generated <see cref="T:System.Reflection.Assembly"/>.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="language"/> is <c>null</c> or empty.</para>
+            <para>- or -</para>
+            <para><paramref name="namespaceImports"/> is <c>null</c>.</para>
+            <para>- or -</para>
+            <para><paramref name="assemblyReferences"/> is <c>null</c>.</para>
+            <para>- or -</para>
+            <para><paramref name="codeParts"/> is <c>null</c>.</para>
+            <para>- or -</para>
+            <para><paramref name="parameterType"/> is <c>null</c>.</para>
+            <para>- or -</para>
+            <para><paramref name="parameterName"/> is <c>null</c>.</para>
+            </exception>
+        </member>
+        <member name="M:TextTemplate.TemplateLanguageHandlerBase.RewriteAndCompile(System.String,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.Type,System.String,System.String@)">
+            <summary>
+            Rewrite the specific code parts into a source code file that can
+            be compiled, compiles it, and returns the compiled assembly.
+            </summary>
+            <param name="language">
+            The language to write the code for.
+            </param>
+            <param name="namespaceImports">
+            A collection of strings naming namespaces to import into the generated code.
+            </param>
+            <param name="assemblyReferences">
+            A collection of strings naming assemblies to reference when compiling the code.
+            </param>
+            <param name="codeParts">
+            A collection of <see cref="T:System.String"/>s containing the code parts to generate the code for.
+            </param>
+            <param name="parameterType">
+            The <see cref="T:System.Type"/> of the parameter to the template.
+            </param>
+            <param name="parameterName">
+            The name of the parameter to the template. If left as <see cref="F:System.String.Empty"/>, the public readable
+            properties of the <paramref name="parameterType"/> will be exposed as their own parameters instead.
+            </param>
+            <param name="code">
+            Upon return of this method, this parameter will contain the code that was compiled, or was attempted compiled.
+            </param>
+            <returns>
+            The generated assembly.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="language"/> is <c>null</c> or empty.</para>
+            <para>- or -</para>
+            <para><paramref name="namespaceImports"/> is <c>null</c>.</para>
+            <para>- or -</para>
+            <para><paramref name="assemblyReferences"/> is <c>null</c>.</para>
+            <para>- or -</para>
+            <para><paramref name="codeParts"/> is <c>null</c>.</para>
+            <para>- or -</para>
+            <para><paramref name="parameterType"/> is <c>null</c>.</para>
+            <para>- or -</para>
+            <para><paramref name="parameterName"/> is <c>null</c>.</para>
+            </exception>
+        </member>
+        <member name="M:TextTemplate.TemplateLanguageHandlerBase.GenerateCode(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.Type,System.String)">
+            <summary>
+            Generates the code for the template.
+            </summary>
+            <param name="namespaceImports">
+            A collection of strings naming namespaces to import into the generated code.
+            </param>
+            <param name="codeParts">
+            A collection of <see cref="T:System.String"/>s containing the code parts to generate the code for.
+            </param>
+            <param name="parameterType">
+            The <see cref="T:System.Type"/> of the parameter to the template.
+            </param>
+            <param name="parameterName">
+            The name of the parameter to the template. If left as <see cref="F:System.String.Empty"/>, the public readable
+            properties of the <paramref name="parameterType"/> will be exposed as their own parameters instead.
+            </param>
+            <returns>
+            The generated code.
+            </returns>
+        </member>
+        <member name="M:TextTemplate.TemplateLanguageHandlerBase.CreateCodeProvider(System.String)">
+            <summary>
+            Creates the specific <see cref="T:System.CodeDom.Compiler.CodeDomProvider"/> based on the language version.
+            </summary>
+            <param name="languageVersion">
+            The language and version used by the template.
+            </param>
+            <returns>
+            The created <see cref="T:System.CodeDom.Compiler.CodeDomProvider"/>.
+            </returns>
+        </member>
+        <member name="P:TextTemplate.TemplateLanguageHandlerBase.NewLine">
+            <summary>
+            Gets the <see cref="P:System.Environment.NewLine"/> value, just to make code easier to write.
+            </summary>
+        </member>
+        <member name="M:TextTemplate.CSharpTemplateHandler.CreateCodeProvider(System.String)">
+            <summary>
+            Creates the specific <see cref="T:System.CodeDom.Compiler.CodeDomProvider"/> based on the language version.
+            </summary>
+            <param name="languageVersion">
+            The language and version used by the template.
+            </param>
+            <returns>
+            The created <see cref="T:System.CodeDom.Compiler.CodeDomProvider"/>.
+            </returns>
+        </member>
+        <member name="M:TextTemplate.CSharpTemplateHandler.GenerateCode(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.Type,System.String)">
+            <summary>
+            Generates the code for the template.
+            </summary>
+            <param name="namespaceImports">
+            A collection of strings naming namespaces to import into the generated code.
+            </param>
+            <param name="codeParts">
+            A collection of <see cref="T:System.String"/>s containing the code parts to generate the code for.
+            </param>
+            <param name="parameterType">
+            The <see cref="T:System.Type"/> of the parameter to the template.
+            </param>
+            <param name="parameterName">
+            The name of the parameter to the template. If left as <see cref="F:System.String.Empty"/>, the public readable
+            properties of the <paramref name="parameterType"/> will be exposed as their own parameters instead.
+            </param>
+            <returns>
+            The generated code.
+            </returns>
+        </member>
+        <member name="T:TextTemplate.IncludeEventArgs">
+            <summary>
+            This <see cref="T:System.EventArgs"/> descendant is used by <see cref="E:TextTemplate.Template`1.Include"/>.
+            </summary>
+        </member>
+        <member name="M:TextTemplate.IncludeEventArgs.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TextTemplate.IncludeEventArgs"/> class.
+            </summary>
+            <param name="name">
+            Name of the template content to include.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="name"/> is <c>null</c> or empty.</para>
+            </exception>
+        </member>
+        <member name="P:TextTemplate.IncludeEventArgs.Name">
+            <summary>
+            Gets the name of the template content to include.
+            </summary>
+        </member>
+        <member name="P:TextTemplate.IncludeEventArgs.Content">
+            <summary>
+            Gets or sets the content to include.
+            </summary>
+        </member>
+        <member name="P:TextTemplate.IncludeEventArgs.Handled">
+            <summary>
+            Gets or sets a value indicating whether the include directive was handled.
+            If left at its default, <c>false</c>, the inclusion attempt will fail with an exception.
+            </summary>
+        </member>
+        <member name="T:TextTemplate.ITemplateProxy">
+            <summary>
+            This interface is implemented by <see cref="T:TextTemplate.TemplateProxy"/> and used
+            by <see cref="T:TextTemplate.Template`1"/> to talk to the proxy hosted in its own
+            <see cref="T:System.AppDomain"/>.
+            </summary>
+        </member>
+        <member name="M:TextTemplate.ITemplateProxy.Compile(System.String,System.Collections.Generic.Dictionary{System.String,System.Type},System.Type,System.String)">
+            <summary>
+            Compiles the template content.
+            </summary>
+            <param name="content">
+            The template content to compile.
+            </param>
+            <param name="handlers">
+            The set of known languages and their handler types.
+            </param>
+            <param name="parameterType">
+            The <see cref="T:System.Type"/> of the parameter to the template.
+            </param>
+            <param name="parameterName">
+            The name of the parameter to the template. If left as <see cref="F:System.String.Empty"/>, the public readable
+            properties of the <paramref name="parameterType"/> will be exposed as their own parameters instead.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="content"/> is <c>null</c>.</para>
+            <para>- or -</para>
+            <para><paramref name="handlers"/> is <c>null</c>.</para>
+            <para>- or -</para>
+            <para><paramref name="parameterType"/> is <c>null</c>.</para>
+            <para>- or -</para>
+            <para><paramref name="parameterName"/> is <c>null</c>.</para>
+            </exception>
+        </member>
+        <member name="M:TextTemplate.ITemplateProxy.Execute(System.Object)">
+            <summary>
+            Executes the template and returns the generated output.
+            </summary>
+            <param name="templateState">
+            The state for the template to process.
+            </param>
+            <returns>
+            The generated output.
+            </returns>
+        </member>
+        <member name="M:TextTemplate.ITemplateProxy.GetCode">
+            <summary>
+            Returns the code that was compiled, for debugging purposes.
+            </summary>
+            <returns>
+            The code that was compiled.
+            </returns>
+        </member>
+        <member name="T:TextTemplate.LanguageHandlers">
+            <summary>
+            This class holds the registered <see cref="T:TextTemplate.ITemplateLanguageHandler"/> objects.
+            </summary>
+        </member>
+        <member name="F:TextTemplate.LanguageHandlers._RegisteredHandlers">
+            <summary>
+            This dictionary holds registered languages and their handler types.
+            </summary>
+        </member>
+        <member name="M:TextTemplate.LanguageHandlers.GetRegisteredHandlers">
+            <summary>
+            Gets the registered handlers.
+            </summary>
+            <returns>
+            The dictionary containing the registered language handlers.
+            </returns>
+        </member>
+        <member name="M:TextTemplate.LanguageHandlers.RegisterHandler(System.String,System.Type)">
+            <summary>
+            Registers the language and its handler.
+            </summary>
+            <param name="language">
+            The language identifier.
+            </param>
+            <param name="handlerType">
+            The type that will process the given <paramref name="language"/>.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="language"/> is <c>null</c> or empty.</para>
+            <para>- or -</para>
+            <para><paramref name="handlerType"/> is <c>null</c>.</para>
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <para><paramref name="handlerType"/> is abstract.</para>
+            <para>- or -</para>
+            <para><paramref name="handlerType"/> is generic.</para>
+            <para>- or -</para>
+            <para><paramref name="handlerType"/> does not implement <see cref="T:TextTemplate.ITemplateLanguageHandler"/>.</para>
+            </exception>
+        </member>
+        <member name="T:TextTemplate.StringEx">
+            <summary>
+            This class implements IsNullOrWhiteSpace for .NET 3.5.
+            </summary>
+        </member>
+        <member name="M:TextTemplate.StringEx.IsNullOrWhiteSpace(System.String)">
+            <summary>
+            Compares the <paramref name="value"/> against <c>null</c> and checks if the
+            string contains only whitespace.
+            </summary>
+            <param name="value">
+            The string value to check.
+            </param>
+            <returns>
+            <c>true</c> if the string <paramref name="value"/> is <c>null</c>, <see cref="F:System.String.Empty"/>,
+            or contains only whitespace; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="T:TextTemplate.TemplateCompilerException">
+            <summary>
+            This exception is used when errors occur during compilation of the template code in the
+            application domain.
+            </summary>
+        </member>
+        <member name="T:TextTemplate.TemplateException">
+            <summary>
+            This exception is the base for other exception types used in the templating engine.
+            </summary>
+        </member>
+        <member name="M:TextTemplate.TemplateException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TextTemplate.TemplateException"/> class with serialized data.
+            </summary>
+            <param name="info">
+            The SerializationInfo that holds the serialized object data about the exception being thrown.
+            </param>
+            <param name="context">
+            The StreamingContext that contains contextual information about the source or destination.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="info"/> is null.</para>
+            </exception>
+            <exception cref="T:System.Runtime.Serialization.SerializationException">
+            <para>The class name is null or System.Exception.HResult is zero (0).</para>
+            </exception>
+        </member>
+        <member name="M:TextTemplate.TemplateException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TextTemplate.TemplateException"/> class with a specified error message
+            and a reference to the inner exception that is the cause of this exception.
+            </summary>
+            <param name="message">
+            The error message that explains the reason for the exception.
+            </param>
+            <param name="innerException">
+            The exception that is the cause of the current exception. If the innerException parameter is not a null reference
+            (Nothing in Visual Basic), the current exception is raised in a catch block that handles the inner exception.
+            </param>
+        </member>
+        <member name="M:TextTemplate.TemplateException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TextTemplate.TemplateException"/> class with a specified error message.
+            </summary>
+            <param name="message">
+            The message that describes the error.
+            </param>
+        </member>
+        <member name="M:TextTemplate.TemplateException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TextTemplate.TemplateException"/> class.
+            </summary>
+        </member>
+        <member name="M:TextTemplate.TemplateCompilerException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TextTemplate.TemplateCompilerException"/> class with serialized data.
+            </summary>
+            <param name="info">
+            The SerializationInfo that holds the serialized object data about the exception being thrown.
+            </param>
+            <param name="context">
+            The StreamingContext that contains contextual information about the source or destination.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="info"/> is null.</para>
+            </exception>
+            <exception cref="T:System.Runtime.Serialization.SerializationException">
+            <para>The class name is null or System.Exception.HResult is zero (0).</para>
+            </exception>
+        </member>
+        <member name="M:TextTemplate.TemplateCompilerException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TextTemplate.TemplateCompilerException"/> class with a specified error message
+            and a reference to the inner exception that is the cause of this exception.
+            </summary>
+            <param name="message">
+            The error message that explains the reason for the exception.
+            </param>
+            <param name="innerException">
+            The exception that is the cause of the current exception. If the innerException parameter is not a null reference
+            (Nothing in Visual Basic), the current exception is raised in a catch block that handles the inner exception.
+            </param>
+        </member>
+        <member name="M:TextTemplate.TemplateCompilerException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TextTemplate.TemplateCompilerException"/> class with a specified error message.
+            </summary>
+            <param name="message">
+            The message that describes the error.
+            </param>
+        </member>
+        <member name="M:TextTemplate.TemplateCompilerException.#ctor(System.String,System.String,System.CodeDom.Compiler.CompilerErrorCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TextTemplate.TemplateCompilerException"/> class with a specified error message.
+            </summary>
+            <param name="message">
+            The message that describes the error.
+            </param>
+            <param name="code">
+            The code that was compiled.
+            </param>
+            <param name="errors">
+            The collection of compiler errors produced when compiling the template code.
+            </param>
+        </member>
+        <member name="M:TextTemplate.TemplateCompilerException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TextTemplate.TemplateCompilerException"/> class.
+            </summary>
+        </member>
+        <member name="M:TextTemplate.TemplateCompilerException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            When overridden in a derived class, sets the <see cref="T:System.Runtime.Serialization.SerializationInfo"></see> with information about the exception.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"></see> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"></see> that contains contextual information about the source or destination.</param>
+            <exception cref="T:System.ArgumentNullException">The info parameter is a null reference (Nothing in Visual Basic). </exception>
+        </member>
+        <member name="P:TextTemplate.TemplateCompilerException.Errors">
+            <summary>
+            Gets the collection of errors produced when compiling the faulty template source code.
+            </summary>
+            <value>
+            A <see cref="T:System.CodeDom.Compiler.CompilerErrorCollection"/> containing the <see cref="T:System.CodeDom.Compiler.CompilerError"/>
+            objects that indicate the cause for this <see cref="T:TextTemplate.TemplateCompilerException"/>.
+            </value>
+        </member>
+        <member name="P:TextTemplate.TemplateCompilerException.Code">
+            <summary>
+            Gets the code that contained the <see cref="P:TextTemplate.TemplateCompilerException.Errors"/>.
+            </summary>
+            <value>
+            The code from the template that contains the errors.
+            </value>
+        </member>
+        <member name="T:TextTemplate.Template`1">
+            <summary>
+            This class implements the public interface for the text templating engine.
+            </summary>
+            <typeparam name="T">
+            The type of parameter object to pass to the template.
+            </typeparam>
+            <example> Basic template using C# as programming language
+            <code>
+              using (var template = new Template())
+              {
+                template.Content = "Current date and time: &lt;%= DateTime.Now %&gt;";
+                var output = template.Execute();
+                // output should be: "Current date and time: 08.02.2011 18:00:00", or similar
+              }
+            </code>
+            Template with flow control
+            <code>
+              using (var template = new Template())
+              {
+                template.Content = @"&lt;% if (DateTime.Now.Hour &lt; 12) { %&gt;
+              Good morning!
+              &lt;% } else if (DateTime.Now.Hour &lt; 18) { %&gt;
+              Good afternoon
+              &lt;% } else { %&gt;
+              Good evening
+              &lt;% } %&gt;
+              ";
+                var output = template.Execute();
+                // output should be either "Good morning", "Good afternoon" or "Good evening"
+              }
+            </code>
+            The same template with VB code instead of C# code
+            <code>
+              using (var template = new Template())
+              {
+                template.Content = @"&lt;%@ language VBv3.5 %&gt;
+              &lt;% If DateTime.Now.Hour &lt; 12 Then %&gt;
+              Good morning!
+              &lt;% ElseIf DateTime.Now.Hour &lt; 18 Then %&gt;
+              Good afternoon
+              &lt;% Else %&gt;
+              Good evening
+              &lt;% End If %&gt;
+              ";
+                var output = template.Execute();
+                // output should be either "Good morning", "Good afternoon" or "Good evening"
+              }
+            </code>
+            Passing parameters to template
+            <code>
+              using (var template = new Template&lt;string&gt;("Name"))
+              {
+                template.Content = "Hello &lt;%= Name %&gt;!";
+                var output = template.Execute("Anders");
+                // output is now: "Hello, Anders!"
+              }
+            </code>
+            Referencing other assemblies and importing namespaces
+            <code>
+              using (var template = new Template())
+              {
+                template.Content = "&lt;%@ reference System.Drawing %&gt;&lt;%@ using System.Drawing %&gt;&lt;%= Color.Red.ToString() %&gt;";
+                var output = template.Execute();
+                // output is now: "Color [Red]"
+              }
+            </code>
+            Adding nested classes and extra methods
+            <code>
+              using (var template = new Template())
+              {
+                template.Content = @"&lt;% var person = new Person(); Dump(person); %&gt;
+              &lt;%+
+              public class Person
+              {
+                  public Person()
+                  {
+                      Name = ""Anders"";
+                  }
+                  
+                  public string Name { get; set; }
+              }
+              
+              public void Dump(Person p)
+              {
+              %&gt;
+              &lt;%= p.Name %&gt;
+              &lt;%
+              }
+              %&gt;";
+                var output = template.Execute();
+                // output is now: "Anders"
+              }
+            </code>
+            </example>
+        </member>
+        <member name="F:TextTemplate.Template`1._ParameterName">
+            <summary>
+            The name of the parameter to pass to the template.
+            </summary>
+        </member>
+        <member name="F:TextTemplate.Template`1._TemplateIndex">
+            <summary>
+            Increasing number to give each <see cref="T:System.AppDomain"/> its own unique name.
+            </summary>
+        </member>
+        <member name="F:TextTemplate.Template`1._Content">
+            <summary>
+            This is the backing field for the <see cref="P:TextTemplate.Template`1.Content"/> property.
+            </summary>
+        </member>
+        <member name="F:TextTemplate.Template`1._IsDisposed">
+            <summary>
+            This field holds a value indicating whether this <see cref="T:TextTemplate.Template`1"/> instance has been disposed.
+            </summary>
+        </member>
+        <member name="F:TextTemplate.Template`1._TemplateDomain">
+            <summary>
+            This field holds the <see cref="T:System.AppDomain"/> that will host the template code.
+            </summary>
+        </member>
+        <member name="F:TextTemplate.Template`1._TemplateProxy">
+            <summary>
+            This <see cref="T:TextTemplate.ITemplateProxy"/> object communicates with the <see cref="T:TextTemplate.TemplateProxy"/>
+            that is hosted in <see cref="F:TextTemplate.Template`1._TemplateDomain"/>.
+            </summary>
+        </member>
+        <member name="M:TextTemplate.Template`1.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TextTemplate.Template`1"/> class.
+            </summary>
+            <param name="parameterName">
+            The name of the parameter to pass to the template.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="parameterName"/> is <c>null</c> or empty.</para>
+            </exception>
+        </member>
+        <member name="M:TextTemplate.Template`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TextTemplate.Template`1"/> class.
+            </summary>
+            <remarks>
+            Note that with this constructor, a parameter is still passed to the template, but
+            all public readable properties of the object will be lifted out as individual parameters to it.
+            </remarks>
+        </member>
+        <member name="M:TextTemplate.Template`1.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:TextTemplate.Template`1.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="M:TextTemplate.Template`1.AssertNotDisposed">
+            <summary>
+            Checks the internal disposed flag and throws <see cref="T:System.ObjectDisposedException"/> if it has been set.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">
+            This <see cref="T:TextTemplate.Template`1"/> instance has been disposed.
+            </exception>
+        </member>
+        <member name="M:TextTemplate.Template`1.Execute(`0)">
+            <summary>
+            Executes the template, returning the generated text, passing the
+            specified state object to the template code.
+            </summary>
+            <param name="parameterValue">
+            A parameter that will be passed to the template.
+            </param>
+            <returns>
+            The output generated by executing the template.
+            </returns>
+            <remarks>
+            If the template has not yet been compiled, this will be done before
+            execution, as part of the call to this method.
+            </remarks>
+        </member>
+        <member name="M:TextTemplate.Template`1.Invalidate">
+            <summary>
+            Invalidates internal data structures, releasing compiled versions of
+            the template and associated information.
+            </summary>
+        </member>
+        <member name="M:TextTemplate.Template`1.Compile">
+            <summary>
+            Compiles the template.
+            </summary>
+            <exception cref="T:TextTemplate.TemplateCompilerException">
+            The template failed to compile, see <see cref="P:TextTemplate.TemplateCompilerException.Errors"/>
+            for more information about the cause.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            An unsupported language tag or version was specified in the template.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            <para>The compiler was unable to load all the referenced assemblies.</para>
+            <para>- or -</para>
+            <para>An invalid directive was specified in the template.</para>
+            <para>- or -</para>
+            <para>The code blocks was mismatched in the template.</para>
+            </exception>
+        </member>
+        <member name="M:TextTemplate.Template`1.PreProcessCode(System.String,System.Collections.Generic.HashSet{System.String})">
+            <summary>
+            Pre-processes the template code to handle include-directives.
+            </summary>
+            <param name="content">
+            The content to pre-process.
+            </param>
+            <param name="inclusionStack">
+            This structure is used to detect cycles in included content, where one included
+            piece of content includes another, which again includes the first.
+            </param>
+            <returns>
+            The preprocessed code.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="content"/> is <c>null</c>.</para>
+            </exception>
+        </member>
+        <member name="M:TextTemplate.Template`1.CreateDomain">
+            <summary>
+            Creates the <see cref="T:System.AppDomain"/> that will host the compiled code.
+            </summary>
+        </member>
+        <member name="M:TextTemplate.Template`1.OnInclude(TextTemplate.IncludeEventArgs)">
+            <summary>
+            Raises the <see cref="E:TextTemplate.Template`1.Include"/> event.
+            </summary>
+            <param name="e">The <see cref="T:TextTemplate.IncludeEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="P:TextTemplate.Template`1.IsCompiled">
+            <summary>
+            Gets a value indicating whether the template has been compiled and is
+            ready for execution.
+            </summary>
+            <value>
+            <c>true</c> if the template has been compiled;
+            otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:TextTemplate.Template`1.Content">
+            <summary>
+            Gets or sets the template content.
+            </summary>
+            <value>
+            The template content.
+            </value>
+        </member>
+        <member name="P:TextTemplate.Template`1.Code">
+            <summary>
+            Gets the resulting code after transforming the template content into
+            code for compilation and execution.
+            </summary>
+        </member>
+        <member name="E:TextTemplate.Template`1.Include">
+            <summary>
+            This event is fired if the template attempts to include files. If this event is
+            not handled, the inclusion attempt will fail.
+            </summary>
+        </member>
+        <member name="T:TextTemplate.TemplateProxy">
+            <summary>
+            This class is loaded into its own <see cref="T:System.AppDomain"/>
+            and hosts the compiled code from a template.
+            </summary>
+        </member>
+        <member name="M:TextTemplate.TemplateProxy.Compile(System.String,System.Collections.Generic.Dictionary{System.String,System.Type},System.Type,System.String)">
+            <summary>
+            Compiles the template content.
+            </summary>
+            <param name="content">
+            The template content to compile.
+            </param>
+            <param name="handlers">
+            The set of known languages and their handler types.
+            </param>
+            <param name="parameterType">
+            The <see cref="T:System.Type"/> of the parameter to the template.
+            </param>
+            <param name="parameterName">
+            The name of the parameter to the template. If left as <see cref="F:System.String.Empty"/>, the public readable
+            properties of the <paramref name="parameterType"/> will be exposed as their own parameters instead.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="content"/> is <c>null</c>.</para>
+            <para>- or -</para>
+            <para><paramref name="handlers"/> is <c>null</c>.</para>
+            <para>- or -</para>
+            <para><paramref name="parameterType"/> is <c>null</c>.</para>
+            <para>- or -</para>
+            <para><paramref name="parameterName"/> is <c>null</c>.</para>
+            </exception>
+        </member>
+        <member name="M:TextTemplate.TemplateProxy.Execute(System.Object)">
+            <summary>
+            Executes the template and returns the generated output.
+            </summary>
+            <param name="templateState">
+            The state for the template to process.
+            </param>
+            <returns>
+            The generated output.
+            </returns>
+        </member>
+        <member name="M:TextTemplate.TemplateProxy.GetCode">
+            <summary>
+            Returns the code that was compiled, for debugging purposes.
+            </summary>
+            <returns>The code that was compiled.</returns>
+        </member>
+        <member name="T:TextTemplate.TemplateParser">
+            <summary>
+            This class handles rewriting the template content into normal compilable code.
+            </summary>
+        </member>
+        <member name="M:TextTemplate.TemplateParser.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TextTemplate.TemplateParser"/> class.
+            </summary>
+            <param name="templateContent">
+            The template content to rewrite.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="templateContent"/> is <c>null</c>.</para>
+            </exception>
+        </member>
+        <member name="M:TextTemplate.TemplateParser.Parse">
+            <summary>
+            Parses the content of the template into separate parts.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">
+            <para>An invalid code block was found, either it contained another code block, or it did not complete.</para>
+            </exception>
+        </member>
+        <member name="P:TextTemplate.TemplateParser.Language">
+            <summary>
+            Gets the language to override the template language with, or <c>null</c> if the
+            one specified by the <see cref="T:TextTemplate.Template`1"/> instance should be used.
+            </summary>
+        </member>
+        <member name="P:TextTemplate.TemplateParser.CodeParts">
+            <summary>
+            Gets the collection of code parts from the template.
+            </summary>
+        </member>
+        <member name="P:TextTemplate.TemplateParser.NamespaceImports">
+            <summary>
+            Gets the collection of namespaces to import when compiling the template.
+            </summary>
+        </member>
+        <member name="P:TextTemplate.TemplateParser.AssemblyReferences">
+            <summary>
+            Gets a collection of referenced assemblies.
+            </summary>
+        </member>
+        <member name="T:TextTemplate.TemplateSyntaxException">
+            <summary>
+            This <see cref="T:TextTemplate.TemplateException"/> descendant is used to flag syntax errors
+            in the template structure, usually an imbalance in code block tokens.
+            </summary>
+        </member>
+        <member name="M:TextTemplate.TemplateSyntaxException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TextTemplate.TemplateSyntaxException"/> class.
+            </summary>
+        </member>
+        <member name="M:TextTemplate.TemplateSyntaxException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TextTemplate.TemplateSyntaxException"/> class with a specified error message.
+            </summary>
+            <param name="message">
+            The message that describes the error.
+            </param>
+        </member>
+        <member name="M:TextTemplate.TemplateSyntaxException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TextTemplate.TemplateSyntaxException"/> class with a specified error message
+            and a reference to the inner exception that is the cause of this exception.
+            </summary>
+            <param name="message">
+            The error message that explains the reason for the exception.
+            </param>
+            <param name="innerException">
+            The exception that is the cause of the current exception. If the innerException parameter is not a null reference
+            (Nothing in Visual Basic), the current exception is raised in a catch block that handles the inner exception.
+            </param>
+        </member>
+        <member name="M:TextTemplate.TemplateSyntaxException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TextTemplate.TemplateSyntaxException"/> class with serialized data.
+            </summary>
+            <param name="info">
+            The SerializationInfo that holds the serialized object data about the exception being thrown.
+            </param>
+            <param name="context">
+            The StreamingContext that contains contextual information about the source or destination.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="info"/> is null.</para>
+            </exception>
+            <exception cref="T:System.Runtime.Serialization.SerializationException">
+            <para>The class name is null or System.Exception.HResult is zero (0).</para>
+            </exception>
+        </member>
+        <member name="M:TextTemplate.TemplateToken.Equals(TextTemplate.TemplateToken)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <returns>
+            true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
+            </returns>
+            <param name="other">
+            An object to compare with this object.
+            </param>
+        </member>
+        <member name="M:TextTemplate.TemplateToken.Equals(System.Object)">
+            <summary>
+            Indicates whether this instance and a specified object are equal.
+            </summary>
+            <returns>
+            true if <paramref name="obj"/> and this instance are the same type and represent the same value; otherwise, false.
+            </returns>
+            <param name="obj">
+            Another object to compare to. 
+            </param>
+        </member>
+        <member name="M:TextTemplate.TemplateToken.GetHashCode">
+            <summary>
+            Returns the hash code for this instance.
+            </summary>
+            <returns>
+            A 32-bit signed integer that is the hash code for this instance.
+            </returns>
+        </member>
+        <member name="M:TextTemplate.TemplateToken.ToString">
+            <summary>
+            Returns the fully qualified type name of this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> containing a fully qualified type name.
+            </returns>
+        </member>
+        <member name="T:TextTemplate.TemplateTokenType">
+            <summary>
+            This enum is used by the <see cref="T:TextTemplate.TemplateParser"/> and <see cref="T:TextTemplate.TemplateTokenizer"/> to split
+            the contents of a template into manageable chunks.
+            </summary>
+        </member>
+        <member name="F:TextTemplate.TemplateTokenType.End">
+            <summary>
+            The end of the template has been reached.
+            </summary>
+        </member>
+        <member name="F:TextTemplate.TemplateTokenType.CodeBlockStart">
+            <summary>
+            A code block starts with this token.
+            </summary>
+        </member>
+        <member name="F:TextTemplate.TemplateTokenType.CodeBlockEnd">
+            <summary>
+            A code block ends with this token.
+            </summary>
+        </member>
+        <member name="F:TextTemplate.TemplateTokenType.Character">
+            <summary>
+            This is a single character token.
+            </summary>
+        </member>
+        <member name="F:TextTemplate.TemplateTokenType.LineBreak">
+            <summary>
+            This is a line break token, can consist of one or two characters.
+            </summary>
+        </member>
+        <member name="T:TextTemplate.TypeHelper">
+            <summary>
+            Internal helper routines for <see cref="T:System.Type"/> objects.
+            </summary>
+        </member>
+        <member name="M:TextTemplate.TypeHelper.TypeToString(System.Type,System.Boolean)">
+            <summary>
+            Returns the fully formatted name of the specified type, in C# or VB.NET syntax.
+            </summary>
+            <returns>
+            The fully formatted type name.
+            </returns>
+            <param name="type">
+            The <see cref="T:System.Type"/> to get the fully formatted name for.
+            </param>
+            <param name="csharpSyntax">
+            If <c>true</c>, return C# syntax for the fully formatted name;
+            otherwise, return VB.NET syntax.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="type"/> is <c>null</c>.</para>
+            </exception>
+        </member>
+        <member name="T:TextTemplate.VisualBasicTemplateHandler">
+            <summary>
+            This class implements <see cref="T:TextTemplate.ITemplateLanguageHandler"/> for the Visual Basic .NET language.
+            </summary>
+        </member>
+        <member name="M:TextTemplate.VisualBasicTemplateHandler.GenerateCode(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.Type,System.String)">
+            <summary>
+            Generates the code for the template.
+            </summary>
+            <param name="namespaceImports">
+            A collection of strings naming namespaces to import into the generated code.
+            </param>
+            <param name="codeParts">
+            A collection of <see cref="T:System.String"/>s containing the code parts to generate the code for.
+            </param>
+            <param name="parameterType">
+            The <see cref="T:System.Type"/> of the parameter to the template.
+            </param>
+            <param name="parameterName">
+            The name of the parameter to the template. If left as <see cref="F:System.String.Empty"/>, the public readable
+            properties of the <paramref name="parameterType"/> will be exposed as their own parameters instead.
+            </param>
+            <returns>
+            The generated code.
+            </returns>
+        </member>
+        <member name="M:TextTemplate.VisualBasicTemplateHandler.CreateCodeProvider(System.String)">
+            <summary>
+            Creates the specific <see cref="T:System.CodeDom.Compiler.CodeDomProvider"/> based on the language version.
+            </summary>
+            <param name="languageVersion">
+            The language and version used by the template.
+            </param>
+            <returns>
+            The created <see cref="T:System.CodeDom.Compiler.CodeDomProvider"/>.
+            </returns>
+        </member>
+        <member name="T:TextTemplate.Template">
+            <summary>
+            This descendant of <see cref="T:TextTemplate.Template`1"/> adds back the API for the old-style template.
+            </summary>
+        </member>
+        <member name="M:TextTemplate.Template.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TextTemplate.Template"/> class.
+            </summary>
+            <remarks>
+            See <see cref="T:TextTemplate.Template`1"/> for examples.
+            </remarks>
+        </member>
+        <member name="M:TextTemplate.Template.Execute">
+            <summary>
+            Executes the template, returning the generated text.
+            </summary>
+            <returns>
+            The output generated by executing the template.
+            </returns>
+            <remarks>
+            If the template has not yet been compiled, this will be done before
+            execution, as part of the call to this method.
+            </remarks>
+        </member>
+    </members>
+</doc>
