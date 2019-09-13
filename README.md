@@ -18,7 +18,7 @@
 
 ## Prerequisites
 - Install _Microsoft Visual Studio — Community Edition_
-- Install [Cortona 3D](https://github.com/fepecas/labyrinth/blob/master/install/cortona3d-viewer-64bit.msi) plugin
+- Install [Cortona 3D](https://github.com/fepecas/labyrinth/raw/master/install/cortona3d-viewer-64bit.msi) plugin
 - _Cortona 3D_ plugin only works with _Internet Explorer_
 
 ## How to use it
